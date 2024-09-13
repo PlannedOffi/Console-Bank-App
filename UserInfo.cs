@@ -1,4 +1,4 @@
-﻿namespace _2ndConsole_Bank_App
+﻿namespace  _2ndConsole_Bank_App
 {
     public class UserInfo
     {
