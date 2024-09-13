@@ -67,8 +67,9 @@ namespace _2ndConsole_Bank_App
                         Console.WriteLine("SEND MONEY < 1 >");
                         Console.WriteLine("WITHDRAW CASH < 2 >");
                         Console.WriteLine("MAKE A DEPOSIT < 3 >");
+                        Console.WriteLine("CHECK BALANCE < 4 >");
 
-                        Console.WriteLine("LOGOUT < 4 >");
+                        Console.WriteLine("LOGOUT < 5 >");
                         string BankOpt = Console.ReadLine();
 
                         Processes processes = new Processes();
@@ -102,6 +103,15 @@ namespace _2ndConsole_Bank_App
                                 break;
 
                             case "4":
+                            Console.WriteLine("CURRENT BALANCE");
+                            Processes check = new Processes();
+                            check.currentBalance(user , myList);
+                            Processes ink = new Processes();
+                            ink.Continue(user, myList);
+                            break ;
+
+
+                            case "5":
                                 Console.WriteLine("Logout");
                                 Processes logout = new Processes();
                                 logout.Logout(user, myList);

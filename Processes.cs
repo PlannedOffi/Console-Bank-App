@@ -171,7 +171,9 @@ namespace _2ndConsole_Bank_App
         public void currentBalance(Users sender, List<Users> myList)
         {
             Console.WriteLine(sender.Username + " currently has " + sender.Balance);
+         
         }
 
+       
     }
 }
