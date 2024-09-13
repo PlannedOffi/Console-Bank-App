@@ -40,7 +40,14 @@ namespace _2ndConsole_Bank_App
                 {
                     // Validate if sender has enough balance
                     if (sender.Balance >= transferAmount)
-                    {
+                    {   
+                        if (transferAmount <= 0)  //transfer amount cannot be negative
+                        {
+                            Console.WriteLine("Cannot transfer amounts less that 10");
+                            Continue(sender, myList);
+
+                            return;
+                        }
                         // Perform the transfer
                         sender.Balance -= transferAmount;
                         recipient.Balance += transferAmount;
@@ -54,11 +61,13 @@ namespace _2ndConsole_Bank_App
                     else
                     {
                         Console.WriteLine("Insufficient funds to complete the transfer.");
+                        Continue(sender, myList);//Continue Syntax
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid amount entered.");
+                    Continue(sender, myList);//Continue Syntax
                 }
             }
             else
@@ -76,6 +85,8 @@ namespace _2ndConsole_Bank_App
             {
                 if (sender.Balance >= withdrawAmount)
                 {
+                   
+
                     sender.Balance -= withdrawAmount;
                     Console.WriteLine(withdrawAmount + " was succesfully withdrawn!");
                     Console.WriteLine(sender.Username + "  new balance: " + sender.Balance);
@@ -86,12 +97,14 @@ namespace _2ndConsole_Bank_App
                 else
                 {
                     Console.WriteLine("Insufficient funds");
+                    Continue(sender, myList); //Continue Syntax
                 }
 
             }
             else
             {
                 Console.WriteLine("Invalid Amount");
+                Continue(sender, myList);//Continue Syntax
             }
 
         }
@@ -101,7 +114,12 @@ namespace _2ndConsole_Bank_App
             Console.WriteLine("HOW MUCH CASH WOULD YOU LIKE TO DEPOSIT? : ");
             if (double.TryParse(Console.ReadLine(), out double depoAmount))
             {
-
+                if (depoAmount <= 4)  //deposit ammount cannot be less than 5
+                {
+                    Console.WriteLine("Cannot deposit amounts less than 5");
+                    //Continue(sender , myList);
+                    return;
+                }
                 sender.Balance += depoAmount;
                 Console.WriteLine(depoAmount + " was succesfully deposited!");
                 Console.WriteLine(sender.Username + "  new balance: " + sender.Balance);
@@ -114,6 +132,7 @@ namespace _2ndConsole_Bank_App
             else
             {
                 Console.WriteLine("Invalid Amount");
+                Continue(sender, myList); //Continue Syntax
             }
         }
 
@@ -139,6 +158,11 @@ namespace _2ndConsole_Bank_App
 
                 case "2":
                     Console.WriteLine(" END OF SESSION");
+                    break;
+
+                default:
+                    Console.WriteLine("INVALID INPUT");
+                    Continue(user , myList);  //continue syntax
                     break;
 
             }
